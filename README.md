@@ -1,2 +1,3 @@
-# Churn Prediction of League of Legends (LoL) Players
-Este projeto tem como objetivo desenvolver um modelo de previsão de Churn utilizando técnicas de aprendizado de máquina para identificar e prever a possibilidade de abandono por parte dos jogadores no popular jogo online, League of Legends.
+# Churn Prediction of Chess.com Players
+Este projeto foi feito para o trabalho final da diciplina de Pensamento Analítico de Dados para o curso de Inteligência Artificial da UFG, nosso grupo escolheu trabalhar com Predição de Churn, e como pedido pelo professor, o que move esse projeto é a pergunta: 
+**É possível prever o Churn de enxadristas titulados do Chess.com?**
