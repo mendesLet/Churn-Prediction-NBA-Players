@@ -69,7 +69,7 @@ def Player_newFeatures(csv):
 
 # Medir se é churn e criar coluna churn
 
-def ChurnMaker(csv):
+def Player_churnMaker(csv):
     df = pd.read_csv(csv)
     subset_filenames = ['dec_subset_1.csv', 'dec_subset_2.csv', 'dec_subset_3.csv', 'dec_subset_4.csv',
                         'dec_subset_5.csv', 'dec_subset_6.csv', 'dec_subset_7.csv', 'dec_subset_8.csv']
@@ -81,8 +81,34 @@ def ChurnMaker(csv):
         combined_df = combined_df.append(df, ignore_index=True)
     combined_df.to_csv('Player_Data_Almost_Done.csv', index=False)
 
+def Season_groupBy(csv):
+    df = pd.read_csv('Season_Stats_Almost_Done.csv')
+    df.drop(columns=['Unnamed: 0', 'Year', 'Tm'], inplace=True)
+    df['group_id'] = (df['Player'] != df['Player'].shift(1)).cumsum()
+    
+    df['careers'] = df.groupby(['group_id', 'Player']).cumcount() + 1
+    
+    unique_combinations = pd.DataFrame({
+        'group_id': df['group_id'].values,
+        'Player': df['Player'].values,
+        'Pos': df['Pos'].values
+    })
+    
+    # Merge the unique_combinations DataFrame with the original DataFrame to ensure all names are included
+    merged_df = unique_combinations.merge(df, on=['group_id', 'Player', 'Pos'], how='left')
+    
+    # Group by 'group_id', 'names', and 'gender', sum 'goals', calculate mean of 'score', and get the max 'career'
+    transformed_df = merged_df.groupby(['group_id', 'Player', 'Pos'], as_index=False).agg({'G': 'sum', 'PER': lambda x: round(x.mean(), 1), 'careers': 'max',
+                                                                                           'GS': 'sum', 'MP': 'sum', 'TS%': lambda x: round(x.mean(), 1), 'OWS': lambda x: round(x.mean(), 1),
+                                                                                           'DWS': lambda x: round(x.mean(), 1), 'WS': lambda x: round(x.mean(), 1), 'BPM': lambda x: round(x.mean(), 1), 'FG%': lambda x: round(x.mean(), 1),
+                                                                                           '2P%': lambda x: round(x.mean(), 1), '3P%': lambda x: round(x.mean(), 1)})
+    transformed_df.to_csv('Season_Stats.csv', index=False)
+    
 # Unir ambos csv
 
+def JoinCsv():
+
+    
 def main():
     pass
 
