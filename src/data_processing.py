@@ -81,27 +81,55 @@ def Player_churnMaker(expname):
         combined_df = combined_df.append(df, ignore_index=True)
     combined_df.to_csv(expname, index=False)
 
+def round_mean(x):
+    return round(x.mean(), 1)
+
+
 def Season_groupBy(csv, expname):
     df = pd.read_csv(csv)
-    df.drop(columns=['Unnamed: 0', 'Year', 'Tm'], inplace=True)
+    df = df.sort_values(by=['Player', 'Year'], ascending=[True, True])
+    df.drop(columns=['Unnamed: 0', 'Year'], inplace=True)
+
     df['group_id'] = (df['Player'] != df['Player'].shift(1)).cumsum()
     
     df['careers'] = df.groupby(['group_id', 'Player']).cumcount() + 1
-    
+
+
     unique_combinations = pd.DataFrame({
         'group_id': df['group_id'].values,
-        'Player': df['Player'].values,
-        'Pos': df['Pos'].values
+        'Player': df['Player'].values
     })
     
     # Merge the unique_combinations DataFrame with the original DataFrame to ensure all names are included
-    merged_df = unique_combinations.merge(df, on=['group_id', 'Player', 'Pos'], how='left')
-    
+    merged_df = unique_combinations.merge(df, on=['group_id', 'Player'], how='left')
+
+
+
     # Group by 'group_id', 'names', and 'gender', sum 'goals', calculate mean of 'score', and get the max 'career'
-    transformed_df = merged_df.groupby(['group_id', 'Player', 'Pos'], as_index=False).agg({'G': 'sum', 'PER': lambda x: round(x.mean(), 1), 'careers': 'max',
-                                                                                           'GS': 'sum', 'MP': 'sum', 'TS%': lambda x: round(x.mean(), 1), 'OWS': lambda x: round(x.mean(), 1),
-                                                                                           'DWS': lambda x: round(x.mean(), 1), 'WS': lambda x: round(x.mean(), 1), 'BPM': lambda x: round(x.mean(), 1), 'FG%': lambda x: round(x.mean(), 1),
-                                                                                           '2P%': lambda x: round(x.mean(), 1), '3P%': lambda x: round(x.mean(), 1)})
+    transformed_df = merged_df.groupby(['group_id', 'Player'], as_index=False).agg(
+    careers=('careers', 'max'),
+    Pos = ('Pos','last'),
+    Tm = ('Tm', 'last'),
+    G=('G', 'sum'),  
+    PER=('PER', round_mean),
+    GS=('GS', 'sum'), 
+    MP=('MP', 'sum'),  
+    TS=('TS%', round_mean),
+    OWS=('OWS', round_mean),
+    DWS=('DWS', round_mean),
+    WS=('WS', round_mean),
+    BPM=('BPM', round_mean),
+    FG=('FG%', round_mean),
+    P2=('2P%', round_mean),
+    P3=('3P%', round_mean)
+)
+
+    # Divide 'G', 'GS', and 'MP' by the maximum 'careers' value
+    # Why?? Because for some reason the sum is multiplying by the amount of times showing!!!
+    transformed_df['G'] = transformed_df['G'] / transformed_df['careers']
+    transformed_df['GS'] = transformed_df['GS'] / transformed_df['careers']
+    transformed_df['MP'] = transformed_df['MP'] / transformed_df['careers']
+
     transformed_df.to_csv(expname, index=False)
     
 # Unir ambos csv
@@ -149,7 +177,7 @@ def JoinCsv(csv1, csv2, expname):
 
     
 def main():
-    # Add names of input csvs and output csvs
+    # Add path of input csvs and output csvs
     csv_Season_dropcol = ''
     expname_Season_dropcol = ''
     Season_dropcol(csv_Season_dropcol, expname_Season_dropcol)
