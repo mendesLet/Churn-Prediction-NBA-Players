@@ -152,22 +152,22 @@ def main():
     # Add names of input csvs and output csvs
     csv_Season_dropcol = ''
     expname_Season_dropcol = ''
-    Season_dropcol(csv_Season_dropcol, expname_Season_dropcol):
+    Season_dropcol(csv_Season_dropcol, expname_Season_dropcol)
     
     csv_Player_newFeatures = ''
-    Player_newFeatures(csv_Player_newFeatures):
+    Player_newFeatures(csv_Player_newFeatures)
 
     expname_Player_churnMaker = ''
-    Player_churnMaker(expname_Player_churnMaker): # Deve ter os arquivos criados pelo Player_newFeatures com os mesmos nomes que quando gerados
+    Player_churnMaker(expname_Player_churnMaker) # Deve ter os arquivos criados pelo Player_newFeatures com os mesmos nomes que quando gerados
 
     csv_Season_groupBy = ''
     expname_Season_groupBy = ''
-    Season_groupBy(csv_Season_groupBy, expname_Season_groupBy):
+    Season_groupBy(csv_Season_groupBy, expname_Season_groupBy)
 
     csv1_JoinCsv = ''
     csv2_JoinCsv = ''
     expname_JoinCsv = ''
-    JoinCsv(csv1_JoinCsv, csv2_JoinCsv, expname_JoinCsv):
+    JoinCsv(csv1_JoinCsv, csv2_JoinCsv, expname_JoinCsv)
     
 
 if __name__ == '__main__':
