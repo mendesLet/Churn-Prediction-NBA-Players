@@ -10,7 +10,7 @@ import pandas as pd
 
 # Remover features não necessários e remover jogadores de 1950 a 1979 do csv Seasons_Stats
 
-def Season_dropcol(csv, expname):
+def Season_dropcol(csv, expname): #csv: input csv path, expname: exported csv name
     df = pd.read_csv(csv)
     drop_col = ['Age', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%',
                  'AST%', 'STL%', 'BLK%', 'TOV%', 'USG%', 'blanl', 'WS/48',
@@ -69,8 +69,8 @@ def Player_newFeatures(csv):
 
 # Medir se é churn e criar coluna churn
 
-def Player_churnMaker(csv):
-    df = pd.read_csv(csv)
+def Player_churnMaker(expname): 
+    df = pd.read_csv()
     subset_filenames = ['dec_subset_1.csv', 'dec_subset_2.csv', 'dec_subset_3.csv', 'dec_subset_4.csv',
                         'dec_subset_5.csv', 'dec_subset_6.csv', 'dec_subset_7.csv', 'dec_subset_8.csv']
     combined_df = pd.DataFrame()
@@ -79,10 +79,10 @@ def Player_churnMaker(csv):
         mean_year_active = df['year_active'].mean()
         df['churn'] = (df['year_active'] < mean_year_active).astype(int)
         combined_df = combined_df.append(df, ignore_index=True)
-    combined_df.to_csv('Player_Data_Almost_Done.csv', index=False)
+    combined_df.to_csv(expname, index=False)
 
-def Season_groupBy(csv):
-    df = pd.read_csv('Season_Stats_Almost_Done.csv')
+def Season_groupBy(csv, expname):
+    df = pd.read_csv(csv)
     df.drop(columns=['Unnamed: 0', 'Year', 'Tm'], inplace=True)
     df['group_id'] = (df['Player'] != df['Player'].shift(1)).cumsum()
     
@@ -102,15 +102,73 @@ def Season_groupBy(csv):
                                                                                            'GS': 'sum', 'MP': 'sum', 'TS%': lambda x: round(x.mean(), 1), 'OWS': lambda x: round(x.mean(), 1),
                                                                                            'DWS': lambda x: round(x.mean(), 1), 'WS': lambda x: round(x.mean(), 1), 'BPM': lambda x: round(x.mean(), 1), 'FG%': lambda x: round(x.mean(), 1),
                                                                                            '2P%': lambda x: round(x.mean(), 1), '3P%': lambda x: round(x.mean(), 1)})
-    transformed_df.to_csv('Season_Stats.csv', index=False)
+    transformed_df.to_csv(expname, index=False)
     
 # Unir ambos csv
 
-def JoinCsv():
+def JoinCsv(csv1, csv2, expname):
+    Season_Stats = pd.read_csv(csv1) # 'Season_Stats.csv'
+    Player_Data = pd.read_csv(csv2) # 'Player_Data.csv'
+    
+    # Agroupar DataFrames 
+    groups_csv1 = Season_Stats.groupby('Player_Season').groups
+    groups_csv2 = Player_Data.groupby('Player_Data').groups
+    
+    # Criando um df vazio para o resultado da concatenação
+    combined_df = pd.DataFrame(columns=Season_Stats.columns)
+    
+    # Iterar pelos dfs e combinar eles
+    for name, idx_list_csv1 in groups_csv1.items():
+        idx_list_csv2 = groups_csv2.get(name)
+        
+        if idx_list_csv2 is not None:
+            for idx_csv1, idx_csv2 in zip(idx_list_csv1, idx_list_csv2):
+                combined_row = pd.concat([Season_Stats.iloc[[idx_csv1]], Player_Data.iloc[[idx_csv2]]], axis=1)
+                combined_df = combined_df.append(combined_row, ignore_index=True)
+    
+    # Ajustes nas linhas 
+    columns_to_shift = ['Player_Data', 'year_start', 'year_end', 'height',
+                        'weight', 'birth_date', 'year_active', 'age_start',
+                        'age_end', 'churn']
+    
+    # Shift the values in the specified columns up by one line
+    for column in columns_to_shift:
+        combined_df[column] = combined_df[column].shift(-1)
+    
+    # Ajustes finais
+    combined_df = combined_df.iloc[::2].reset_index(drop=True)
+    
+    int_columns = ['G', 'careers', 'GS', 'MP', 'year_start', 'year_end',
+                   'weight', 'birth_date', 'year_active', 'age_start', 'age_end',
+                   'churn']
+    for columns in int_columns:
+      combined_df[columns] = combined_df[columns].round().astype(int)
+    
+    combined_df = combined_df.drop(columns=['group_id', 'Player_Data'])
+    combined_df.to_csv(expname, index=False)
 
     
 def main():
-    pass
+    # Add names of input csvs and output csvs
+    csv_Season_dropcol = ''
+    expname_Season_dropcol = ''
+    Season_dropcol(csv_Season_dropcol, expname_Season_dropcol):
+    
+    csv_Player_newFeatures = ''
+    Player_newFeatures(csv_Player_newFeatures):
+
+    expname_Player_churnMaker = ''
+    Player_churnMaker(expname_Player_churnMaker): # Deve ter os arquivos criados pelo Player_newFeatures com os mesmos nomes que quando gerados
+
+    csv_Season_groupBy = ''
+    expname_Season_groupBy = ''
+    Season_groupBy(csv_Season_groupBy, expname_Season_groupBy):
+
+    csv1_JoinCsv = ''
+    csv2_JoinCsv = ''
+    expname_JoinCsv = ''
+    JoinCsv(csv1_JoinCsv, csv2_JoinCsv, expname_JoinCsv):
+    
 
 if __name__ == '__main__':
     main()
