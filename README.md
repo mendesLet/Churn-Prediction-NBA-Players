@@ -1,2 +1,2 @@
-# Churn Prediction of NBA Players
+# Churn Prediction of NBA Medium Model Players
 
