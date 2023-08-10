@@ -19,7 +19,7 @@ O FMF (Feature Modeling Framework) é uma abordagem poderosa para criar modelos 
 Os modelos são avaliados usando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
 
 ## Escolha do Modelo: 
-Com base nprincipalmente no balanço entre recall e precision, o Gradient Boosting Classifier é escolhido como o modelo preferido de previsão de "churn" para atletas na NBA League.
+Com base principalmente no balanço entre recall e precision, o Gradient Boosting Classifier é escolhido como o modelo preferido de previsão de "churn" para atletas na NBA League.
 
 ## Referência:
 Este código utilizará como referência o FMF, principalmente o que tange à transformação de dados: https://www.kaggle.com/code/kmalit/bank-customer-churn-prediction/notebook
