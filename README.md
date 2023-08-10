@@ -14,17 +14,14 @@ As principais modificações feitas no dataset além da união de ambos, foi adi
 
 ## Modelos de Machine Learning:
 
-**Logistic Regression**: 
+**Logistic Regression**
 
-**Gradient Boosting Classifier**: 
+**Gradient Boosting Classifier**
 
-**Support Vector Machine Classifier**: 
+**Support Vector Machine Classifier**
 
 ## Avaliação de Modelos: 
 Os modelos são avaliados usando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
-
-## Escolha do Modelo: 
-Com base principalmente no balanço entre recall e precision, o Gradient Boosting Classifier é escolhido como o modelo preferido de predição de "churn" para atletas na NBA League.
 
 ## Referência:
 Este código utilizará como referência o FMF, principalmente o que tange à transformação de dados: https://www.kaggle.com/code/kmalit/bank-customer-churn-prediction/notebook
