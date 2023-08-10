@@ -21,7 +21,7 @@ As principais modificações feitas no dataset além da união de ambos, foi adi
 **Support Vector Machine**
 
 ## Avaliação de Modelos: 
-Os modelos foram avaliados usando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
+Os modelos foram avaliados utilizando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
 
 ## Referência:
-Este código utilizará como referência o FMF, principalmente o que tange à transformação de dados: https://www.kaggle.com/code/kmalit/bank-customer-churn-prediction/notebook
+Este código utilizará como referência o FMF, principalmente no que tange à transformação de dados: https://www.kaggle.com/code/kmalit/bank-customer-churn-prediction/notebook
