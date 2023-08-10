@@ -1,5 +1,5 @@
 # Modelo de Predição de "Churn" de Atletas na NBA League 
-Este repositório contém o código e informações relacionadas à predição de atletas que têm maior probabilidade de bandonarão precocemente a NBA League, permitindo que a liga tome medidas proativas para mitigar o "churn".
+Este repositório contém o código e informações relacionadas à predição de atletas que abandonarão precocemente a NBA League, permitindo que a liga tome medidas proativas para mitigar o "churn".
 
 ## Processos:
 **Limpeza e Transformação de Dados**: Foram removidas colunas dos dados originais que poderião causar overfitting do modelo. Também foi realiza a normalização dos dados e aplicação do one-hot encoding em variáveis categóricas. Isso garante que os dados estejam prontos para serem usados pelos modelos de machine learning.
