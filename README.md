@@ -50,4 +50,5 @@ F1-score: 0.85
 
 
 ## Resultados
-Ao comparar os resultados dos modelos nos conjuntos de métricas FMF e MEDIUM, observamos que os modelos Gradient Boost Classifier tendem a ter melhor desempenho em termos de acurácia, precisão, F1-score e recall em comparação com os outros dois modelos (Logistic Regression e Random Forest Classifier). O Gradient Boost Classifier também apresenta consistência entre os dois conjuntos de métricas.
+Ao comparar os resultados dos modelos nos conjuntos de métricas FMF e MEDIUM, observamos que os modelos Gradient Boost Classifier tendem a ter melhor desempenho em termos de acurácia, precisão, F1-score e recall em comparação com os outros dois modelos (Logistic Regression e Random Forest Classifier). O Gradient Boost Classifier também apresenta consistência entre os dois conjuntos de métricas. E entre os modelos a diferença é miníma se distinguindo na preparação dos dados e na métrica de escolha para determinar o desempenho do modelo.
+
