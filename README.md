@@ -6,10 +6,10 @@ Foram realizados processos de limpeza nos dados, incluindo a remoção de valore
 
 # Exploração de Métricas
 A análise exploratória envolveu a exploração das seguintes métricas:
--> Taxa de vitória (Winning Percentage)
--> Índice de Eficiência (PER)
--> Posição dos jogadores (Pos)
--> Outras métricas relevantes, como idade, altura, peso, entre outras
+Taxa de vitória (Winning Percentage)
+Índice de Eficiência (PER)
+Posição dos jogadores (Pos)
+Outras métricas relevantes, como idade, altura, peso, entre outras
 
 # Taxa de vitória (Winning Percentage)
 Índice de Eficiência (PER)
