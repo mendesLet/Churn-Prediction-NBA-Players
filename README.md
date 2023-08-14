@@ -9,6 +9,27 @@ Nós iniciamos com um dataset original do Kaggle [NBA Players stats since 1950](
 
 As principais modificações feitas no dataset além da união de ambos, foi adição de features, como principal foco do projeto é churn, definimos que o Churn do projeto seria jogadores que tiveram uma carreira menor que a média de tempo das carreiras durante a década que o jogador iniciou. Outra modificação foi, como característica do dataset Season_stats.csv um jogador pode ter tido diferentes carreiras, foi decidido pelo grupo unir essas carreiras e gerar uma média dos features durante essas carreiras.
 
+# Processo de Análise
+Limpeza e Transformação de Dados
+Foram realizados processos de limpeza nos dados, incluindo a remoção de valores ausentes, padronização de formatos e eliminação de informações irrelevantes. Além disso, os dois conjuntos de dados foram combinados para criar um único conjunto completo para análise.
+
+# Exploração de Métricas
+A análise exploratória envolveu a exploração das seguintes métricas:
+Taxa de vitória (Winning Percentage);
+Índice de Eficiência (PER);
+Posição dos jogadores (Pos);
+
+Outras métricas relevantes, como idade, altura, peso, entre outras
+
+# Taxa de vitória (Winning Percentage)
+Índice de Eficiência (PER)
+Posição dos jogadores (Pos)
+Outras métricas relevantes, como idade, altura, peso, entre outras
+Gráficos e visualizações foram utilizados para identificar padrões, tendências e relações entre as métricas. Isso incluiu gráficos de dispersão, gráficos de barras e matrizes de correlação.
+
+# Resultados e Insights
+A análise exploratória revelou insights interessantes sobre a relação entre diferentes métricas e a possibilidade de "churn" (desistência) de jogadores da NBA. Foram identificados padrões de desempenho e características pessoais que podem estar relacionados a maiores taxas de churn.
+
 ## Processos:
 **Limpeza e Transformação de Dados**: foram removidas colunas dos dados originais que poderiam causar overfitting do modelo. Também foi realizada a normalização dos dados e aplicação do one-hot encoding em variáveis categóricas. Isso garante que os dados estejam prontos para serem utilizados pelos modelos de machine learning.
 
@@ -68,24 +89,3 @@ F1-score: 0.85
 
 ## Resultados
 Ao comparar os resultados dos modelos nos conjuntos de métricas FMF e MEDIUM, observamos que os modelos Gradient Boost Classifier tendem a ter melhor desempenho em termos de acurácia, precisão, F1-score e recall em comparação com os outros dois modelos (Logistic Regression e Random Forest Classifier). O Gradient Boost Classifier também apresenta consistência entre os dois conjuntos de métricas. E entre os modelos a diferença é miníma se distinguindo na preparação dos dados e na métrica de escolha para determinar o desempenho do modelo.
-
-# Processo de Análise
-Limpeza e Transformação de Dados
-Foram realizados processos de limpeza nos dados, incluindo a remoção de valores ausentes, padronização de formatos e eliminação de informações irrelevantes. Além disso, os dois conjuntos de dados foram combinados para criar um único conjunto completo para análise.
-
-# Exploração de Métricas
-A análise exploratória envolveu a exploração das seguintes métricas:
-Taxa de vitória (Winning Percentage);
-Índice de Eficiência (PER);
-Posição dos jogadores (Pos);
-
-Outras métricas relevantes, como idade, altura, peso, entre outras
-
-# Taxa de vitória (Winning Percentage)
-Índice de Eficiência (PER)
-Posição dos jogadores (Pos)
-Outras métricas relevantes, como idade, altura, peso, entre outras
-Gráficos e visualizações foram utilizados para identificar padrões, tendências e relações entre as métricas. Isso incluiu gráficos de dispersão, gráficos de barras e matrizes de correlação.
-
-# Resultados e Insights
-A análise exploratória revelou insights interessantes sobre a relação entre diferentes métricas e a possibilidade de "churn" (desistência) de jogadores da NBA. Foram identificados padrões de desempenho e características pessoais que podem estar relacionados a maiores taxas de churn.
