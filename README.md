@@ -23,5 +23,49 @@ As principais modificações feitas no dataset além da união de ambos, foi adi
 ## Avaliação de Modelos: 
 Os modelos foram avaliados utilizando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
 
-## Referência:
-Este código utilizará como referência o FMF, principalmente no que tange à transformação de dados: https://www.kaggle.com/code/kmalit/bank-customer-churn-prediction/notebook
+## Comparações 
+
+*Conjunto FMF:*
+
+Logistic Regression:
+Acurácia: 0.84
+Precision (Precisão): 0.84
+Recall (Revocação): 0.82
+F1-score: 0.83
+
+Random Forest Classifier:
+Acurácia: 0.83
+Precision (Precisão): 0.83
+Recall (Revocação): 0.82
+F1-score: 0.83
+
+Gradient Boost Classifier:
+Acurácia: 0.85
+Precision (Precisão): 0.85
+Recall (Revocação): 0.81
+F1-score: 0.85
+
+*Conjunto MEDIUM:*
+
+Logistic Regression:
+Acurácia: 0.84
+Precision (Precisão): 0.84
+Recall (Revocação): 0.80
+F1-score: 0.83
+
+Random Forest Classifier:
+Acurácia: 0.84
+Precision (Precisão): 0.84
+Recall (Revocação): 0.81
+F1-score: 0.83
+
+Gradient Boost Classifier:
+Acurácia: 0.85
+Precision (Precisão): 0.85
+Recall (Revocação): 0.81
+F1-score: 0.85
+
+
+## Resultados
+Ao comparar os resultados dos modelos nos conjuntos de métricas FMF e MEDIUM, observamos que os modelos Gradient Boost Classifier tendem a ter melhor desempenho em termos de acurácia, precisão, F1-score e recall em comparação com os outros dois modelos (Logistic Regression e Random Forest Classifier). O Gradient Boost Classifier também apresenta consistência entre os dois conjuntos de métricas. E entre os modelos a diferença é miníma se distinguindo na preparação dos dados e na métrica de escolha para determinar o desempenho do modelo.
+
