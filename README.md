@@ -11,23 +11,25 @@ As principais modificações feitas no dataset além da união de ambos, foi adi
 
 ## Exploração de Métricas
 A análise exploratória envolveu a exploração das seguintes métricas:
+
 Taxa de vitória (Winning Percentage);
+
 Índice de Eficiência (PER);
+
 Posição dos jogadores (Pos);
 
 Outras métricas relevantes, como idade, altura, peso, entre outras
-
-## Taxa de vitória (Winning Percentage)
-Índice de Eficiência (PER)
-Posição dos jogadores (Pos)
-Outras métricas relevantes, como idade, altura, peso, entre outras
-Gráficos e visualizações foram utilizados para identificar padrões, tendências e relações entre as métricas. Isso incluiu gráficos de dispersão, gráficos de barras e matrizes de correlação.
+Gráficos e visualizações foram utilizados para identificar padrões, tendências e relações entre as métricas. 
+Isso incluiu gráficos de dispersão, gráficos de barras e matrizes de correlação.
 
 ## Resultados e Insights
-A análise exploratória revelou insights interessantes sobre a relação entre diferentes métricas e a possibilidade de "churn" (desistência) de jogadores da NBA. Foram identificados padrões de desempenho e características pessoais que podem estar relacionados a maiores taxas de churn.
+A análise exploratória revelou insights interessantes sobre a relação entre diferentes métricas e a possibilidade de "churn" (desistência) de jogadores da NBA. 
+Foram identificados padrões de desempenho e características pessoais que podem estar relacionados a maiores taxas de churn.
 
 ## Processos:
-**Limpeza e Transformação de Dados**: foram removidas colunas dos dados originais que poderiam causar overfitting do modelo. Também foi realizada a normalização dos dados e aplicação do one-hot encoding em variáveis categóricas. Isso garante que os dados estejam prontos para serem utilizados pelos modelos de machine learning.
+**Limpeza e Transformação de Dados**: foram removidas colunas dos dados originais que poderiam causar overfitting do modelo. 
+Também foi realizada a normalização dos dados e aplicação do one-hot encoding em variáveis categóricas. 
+Isso garante que os dados estejam prontos para serem utilizados pelos modelos de machine learning.
 
 ## Modelos de Machine Learning:
 
