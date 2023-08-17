@@ -37,7 +37,7 @@ Isso garante que os dados estejam prontos para serem utilizados pelos modelos de
 
 **Gradient Boosting**
 
-**Support Vector Machine**
+**Random Forest Classifier**
 
 ## Avaliação de Modelos: 
 Os modelos foram avaliados utilizando métricas relevantes, como precisão, recall, F1-score e ROC AUC. 
